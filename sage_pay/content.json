@@ -1,0 +1,35 @@
+{
+  "title": "Sage Pay",
+  "description": "Documentation on Sage Pay payment modules for osCommerce Online Merchant.",
+  "copyright": "Copyright (c) 2008-2012 osCommerce. All rights reserved. Content may be reproduced for personal use only.",
+  "authors": [
+    {
+      "name": "Harald Ponce de Leon"
+    },
+    {
+      "name": "John Fitchett"
+    }
+  ],
+  "chapters": {
+    "oscom23": {
+      "title": "osCommerce Online Merchant v2.3",
+      "pages": {
+        "form": {
+          "title": "Sage Pay Form",
+          "package_id" :"",
+          "support_url": ""
+        },
+        "server": {
+          "title": "Sage Pay Server",
+          "package_id" :"",
+          "support_url": ""
+        },
+        "direct": {
+          "title": "Sage Pay Direct",
+          "package_id" :"",
+          "support_url": ""
+        }
+      }
+    }
+  }
+}
