@@ -1,47 +1,49 @@
-<h1>Sage Pay Form</h1>
+<h1>Form <small>v2.0<br />for osCommerce Online Merchant v2.3</small></h1>
 
-<p>Sage Pay Form is our simplist method of accepting payments online, it is recommended if your website is hosted on a shared server.</p>
-
-<h3>How It Works</h3>
-
-{image}form.jpg{image}
-{image}form_content.jpg{image}
-
-<h3>Features And Benefits</h3>
+<p>Sage Pay Form is the simplest integration method to start accepting payments online and is recommended for websites hosted on a shared server plan.</p>
 
 <ul>
-  <li>Pre-integrated with most osCommerce</li>
-  <li>Complete security using the Sage Pay payment pages</li>
-  <li>Email alerts to you and your customer to confirm the status of each transaction</li>
-  <li>Flexible payment features</li>
-  <li>Comprehensive reports</li>
+  <li>No card data is collected, stored or transferred on your site</li>
+  <li>Get automated email notifications when transactions require your attention</li>
+  <li>Look and feel fully customisable</li>
+  <li>Automated confirmation emails are optionally sent to shoppers when a transaction is processed</li>
+  <li>Let Sage Pay take care of hosting your payment pages and handling card data</li>
+  <li>Simplified PCI compliance requirements</li>
 </ul>
 
-<p>The Sage Pay Form payment module is included in osCommerce Online Merchant v2.3 and is available as a separate add-on for existing store owners who are running earlier versions.</p>
+<p>Sage Pay Form is bundled with osCommerce Online Merchant and is also available as a separate Add-On package existing store owners can use to upgrade to.</p>
 
-<div class="achtung">Existing osCommerce Online Merchant v2.2 Milestone 2 store owners must perform additional changes to core source code files to install and use this payment module. These changes are described in the "Manual Installation (as an Add-On)" section.</div>
+<div class="visible-print">
+  <p>This document can be found online at:</p>
+
+  <p><a href="{link}Package|Library|en&sage_pay&oscom23&form{link}">{link}Package|Library|en&sage_pay&oscom23&form{link}</a></p>
+</div>
 
 <h2>Configuration Settings</h2>
 
-<table class="pretty">
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Parameter</th>
       <th>Description</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Enable Sage Pay Form Module</td>
       <td>Setting this parameter to <em>True</em> makes the payment method available to customers during the checkout procedure.</td>
+      <td><em>True</em></td>
     </tr>
     <tr>
       <td>Vendor Login Name</td>
       <td>The vendor login name used to connect to the transaction gateway with.</td>
+      <td></td>
     </tr>
     <tr>
       <td>Encryption Password</td>
       <td>The password used to encrypt and secure transactions with.</td>
+      <td></td>
     </tr>
     <tr>
       <td>Transaction Method</td>
@@ -59,36 +61,21 @@
           <dd>The <em>Payment</em> transaction method verifies, authorises, and transfers the funds to your Merchant account via batch settlement.</dd>
         </dl>
       </td>
+      <td><em>Authenticate</em></td>
     </tr>
     <tr>
-      <td>Transaction Server</td>
-      <td>
-        The following transaction servers are available to process transactions through:
-
-        <dl>
-          <dt>Live</dt>
-          <dd>The <em>Live</em> server is used in production environments to process and receive payments from customers.</dd>
-
-          <dt>Test</dt>
-          <dd>The <em>Test</em> server is only used to test transactions on the Production server. No transactions are processed and no payments are made when transactions are being tested.</dd>
-
-          <dt>Simulator</dt>
-          <dd>The <em>Simulator</em> server is used to test transactions in a sandbox testing environment. No transactions are processed and no payments are made within this environment.</dd>
-        </dl>
-      </td>
-    </tr>
-    <tr>
-      <td>Vendor E-Mail</td>
+      <td>Vendor E-Mail Notification</td>
       <td>
         An e-mail address on which you can be contacted when a transaction completes.<br /><br />
 
-        <div class="info">If you wish to use multiple email addresses, you should add them using the : (colon) character as a separator. e.g. me@mail1.com:me@mail2.com</div>
+        <div class="info">If you wish to use multiple email addresses, you should add them using the colon character as a separator. e.g. me@mail1.com:me@mail2.com</div>
 
         If provided, an e-mail will be sent to this address when each transaction completes (successfully or otherwise). 
       </td>
+      <td></td>
     </tr>
     <tr>
-      <td>Send E-Mail</td>
+      <td>Send E-Mail Notifications</td>
       <td>
         Who to send an e-mail to.
 
@@ -103,6 +90,7 @@
           <dd>Send vendor e-mail but NOT the customer e-mail.</dd>
         </dl>
       </td>
+      <td><em>Customer and Vendor</em></td>
     </tr>
     <tr>
       <td>Customer E-Mail Message</td>
@@ -110,55 +98,96 @@
         A message to the customer which is inserted into the successful transaction e-mails only.<br /><br />
         If provided this message is included toward the top of the customer confirmation e-mails.
       </td>
-    </tr>
-    <tr>
-      <td>Payment Zone</td>
-      <td>If set, this payment method will only be available to orders made within the defined zone.</td>
+      <td></td>
     </tr>
     <tr>
       <td>Set Order Status</td>
       <td>The orders status will be updated to this value when a successful transaction has been made.</td>
+      <td><em>Default Order Status</em></td>
+    </tr>
+    <tr>
+      <td>Transaction Order Status</td>
+      <td>Transactions are logged in this private order status level.</td>
+      <td><em>Sage Pay [Transactions]</em></td>
+    </tr>
+    <tr>
+      <td>Payment Zone</td>
+      <td>If set, this payment method will only be available to orders made within the defined zone.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Transaction Server</td>
+      <td>
+        The following transaction servers are available to process transactions through:
+
+        <dl>
+          <dt>Live</dt>
+          <dd>The <em>Live</em> server is used in production environments to process and receive payments from customers.</dd>
+
+          <dt>Test</dt>
+          <dd>The <em>Test</em> server is only used to test transactions with. No transactions are processed and no payments are made when transactions are being tested.</dd>
+        </dl>
+      </td>
+      <td><em>Live</em></td>
+    </tr>
+    <tr>
+      <td>Debug E-Mail Address</td>
+      <td>Send invalid transaction parameters to this e-mail address.</td>
+      <td></td>
     </tr>
     <tr>
       <td>Sort Order</td>
       <td>The position to show the payment method on the checkout payment page against other available payment methods.</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
 
+<h2>Add-On Package</h2>
+
+<p>The separate Sage Pay Form Add-On package is available at:</p>
+
+<p><a href="http://addons.oscommerce.com/info/6983" target="_blank">http://addons.oscommerce.com/info/6983</a></p>
+
+<h2>Online Demonstration</h2>
+
+<p>An online demonstration is available at:</p>
+
+<p><a href="http://demo.oscommerce.com" target="_blank">http://demo.oscommerce.com</a></p>
+
+<p><i>For the online demonstration, Sage Pay Form has been configured with Sage Pay's test server environment and requires a test payment card to purchase an order.</i></p>
+
 <h2>Manual Installation (as an Add-On)</h2>
 
-<p>After extracting the add-on package, copy the files located in the <em>catalog</em> directory to your osCommerce installation directory on the server. The files must be copied in the correct directory structure as extracted from the add-on package.</p>
+<p>After extracting the Add-On package, copy the files located in the <em>catalog</em> directory to your osCommerce installation directory on the server. The files must be copied in the correct directory structure as extracted from the Add-On package.</p>
 
 <p>The file listing is as follows:</p>
 
 <ul>
   <li>ext/modules/payment/sage_pay/errors.php</li>
   <li>includes/languages/english/modules/payment/sage_pay_form.php</li>
-  <li>includes/languages/espanol/modules/payment/sage_pay_form.php</li>
-  <li>includes/languages/german/modules/payment/sage_pay_form.php</li>
   <li>includes/modules/payment/sage_pay_form.php</li>
 </ul>
 
-<p>The standard languages definitions in English, Spanish, and German are provided in the add-on package. For additional languages, copy one of the existing language definition files to the appropriate language directory and edit the file with a text editor to edit the language definitions. The location of the language definition file must be in:</p>
+<p>The standard language definitions in English are provided in the Add-On package. For additional languages, copy the English language definition file to the appropriate language directory and open the file with a text editor to edit the language definitions. The location of the language definition file must be in:</p>
 
 <ul>
-  <li>includes/languages/<em>language</em>/modules/payment/sage_pay_form.php</li>
+  <li>includes/languages/<em>LANGUAGE</em>/modules/payment/sage_pay_form.php</li>
 </ul>
 
-<p>When the files have been copied to their appropriate locations, the payment module will be available in the Administration Tool -> Modules -> Payment Modules listing where it can be installed.</p>
+<p>When the files have been copied to their appropriate locations, the payment module will be available on the Administration Tool -> Modules -> Payment -> Install Module page where it can be installed, or on the Administration Tool -> Modules -> Payment page if the module was already previously installed.</p>
 
-<h3>Additional Changes for Existing osCommerce Online Merchant v2.2 Milestone 2 Store Owners</h3>
-
-<p>The following core source code changes must also be performed for osCommerce Online Merchant v2.2 Milestone 2 installations:</p>
-
-<p><a href="http://github.com/osCommerce/oscommerce2/commit/80fb06c35704b1c9a8160bc7f7345cc91145862a" target="_blank">http://github.com/osCommerce/oscommerce2/commit/80fb06c35704b1c9a8160bc7f7345cc91145862a</a></p>
-
-<p>This change has been made as a bugfix for osCommerce Online Merchant v2.2 Release Candidate 1 (released 4th July 2007).</p>
+<p>If the module was already previously installed, it is important to visit the module configuration page to make sure new parameters are automatically installed in the database.</p>
 
 <h2>Changelog</h2>
 
 <dl class="bulleted">
+  <dt>v2.0 xx-May-2014</dt>
+  <dd>Use API 3.00.</dd>
+  <dd>Label public title with test tag when in testing mode.</dd>
+  <dd>Allow debug transaction information to be sent in an e-mail for failed transactions.</dd>
+  <dd>Include transaction information in a private order status level.</dd>
+
   <dt>v1.2 04-Sep-2009</dt>
   <dd>Added VendorEMail, SendEMail, and eMailMessage parameters.</dd>
 
@@ -168,31 +197,3 @@
   <dt>v1.0 28-Aug-2009</dt>
   <dd>Initial Release</dd>
 </dl>
-
-<h2>Upgrade Notes</h2>
-
-<h3>v1.1 to v1.2</h3>
-
-<p>If you are upgrading from v1.1 to v1.2 of the payment module, please copy and overwrite the following files on your server:</p>
-
-<ul>
-  <li>includes/modules/payment/sage_pay_form.php</li>
-</ul>
-
-<p>To configure the VendorEMail, SendEMail, and eMailMessage parameter values, either remove and re-install the module from the Administration Tool -> Modules -> Payment Modules page, or perform the following SQL queries to your database:</p>
-
-{code}insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Vendor E-Mail', 'MODULE_PAYMENT_SAGE_PAY_FORM_VENDOR_EMAIL', '', 'An e-mail address on which you can be contacted when a transaction completes. NOTE: If you wish to use multiple email addresses, you should add them using the : (colon) character as a separator. e.g. me@mail1.com:me@mail2.com', '6', '0', now()); 
-insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Send E-Mail', 'MODULE_PAYMENT_SAGE_PAY_FORM_SEND_EMAIL', 'Customer and Vendor', 'Who to send e-mails to.', '6', '0', 'tep_cfg_select_option(array(\'No One\', \'Customer and Vendor\', \'Vendor Only\'), ', now()); 
-insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Customer E-Mail Message', 'MODULE_PAYMENT_SAGE_PAY_FORM_CUSTOMER_EMAIL_MESSAGE', '', 'A message to the customer which is inserted into the successful transaction e-mails only.', '6', '0', 'sage_pay_form_textarea_field(', now());{code} 
-
-<h3>v1.0 to v1.1</h3>
-
-<p>If you are upgrading from v1.0 to v1.1 of the payment module, please copy and overwrite the following files on your server:</p>
-
-<ul>
-  <li>includes/modules/payment/sage_pay_form.php</li>
-</ul>
-
-<p>To update the "Transaction Server" parameter, either remove and re-install the module from the Administration Tool -> Modules -> Payment Modules page, or perform the following SQL query to your database:</p>
-
-{code}update configuration set set_function = 'tep_cfg_select_option(array(\'Live\', \'Test\', \'Simulator\'), ' where configuration_key = 'MODULE_PAYMENT_SAGE_PAY_FORM_TRANSACTION_SERVER';{code}
