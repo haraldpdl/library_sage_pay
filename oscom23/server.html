@@ -1,47 +1,63 @@
-<h1>Sage Pay Server</h1>
+<h1>Server <small>v2.0<br />for osCommerce Online Merchant v2.3</small></h1>
 
-<p>Sage Pay Server is recommended if you wish to run your own order and transaction reports, but you do not want to collect credit card details on your website. To use this product your website must have a fixed IP address.&nbsp; The hosted Sage Pay payment pages work within an iframe on your website giving you the look and feel of a direct integration but without the PCI Compliance requirements as no card data is ever Stored, Processed or Transmitted from the merchant's website.</p>
-
-<h3>How It Works</h3>
-
-{image}server.jpg{image}
-{image}server_content.jpg{image}
-
-<h3>Features And Benefits</h3>
+<p>Sage Pay Server requires you to have your own server to communicate with our payment systems and to store additional transaction information. You won't need to handle card details but it is recommended that you get an SSL certificate. Shoppers will be redirected to Sage Pay's payment pages during the checkout process.</p>
 
 <ul>
-  <li>Simple integration</li>
-  <li>Complete security using the Sage Pay payment pages</li>
-  <li>Customisable payment pages</li>
-  <li>iFrame solution</li>
-  <li>Flexible payment features</li>
-  <li>Automate transaction requests</li>
-  <li>Run your own order and transaction reports</li>
+  <li>Collect and store additional transaction information on your server</li>
+  <li>Develop your own transaction reporting</li>
+  <li>Build your own automated transaction functions</li>
+  <li>Card details are handled by Sage Pay</li>
+  <li>Simplified PCI compliance requirements</li>
 </ul>
 
-<p>The Sage Pay Server payment module is included in osCommerce Online Merchant v2.2 and is available as a separate add-on for existing store owners who are running earlier versions of osCommerce Online Merchant v2.2.</p>
+<p>Sage Pay Server is bundled with osCommerce Online Merchant and is also available as a separate Add-On package existing store owners can use to upgrade to.</p>
 
-<div class="note">This payment module requires PHP to support cURL or access to the "curl" program file.</div>
+<p>The Sage Pay Server payment module supports the following features:</p>
 
-<div class="achtung">Existing osCommerce Online Merchant v2.2 Milestone 2 store owners must perform additional changes to core source code files to install and use this payment module. These changes are described in the "Manual Installation (as an Add-On)" section.</div>
+<ul>
+  <li>SSL Certificate verified transactions</li>
+</ul>
+
+<div class="visible-print">
+  <p>This document can be found online at:</p>
+
+  <p><a href="{link}Package|Library|en&sage_pay&oscom23&server{link}">{link}Package|Library|en&sage_pay&oscom23&server{link}</a></p>
+</div>
+
+<h2>Features</h2>
+
+<h3>SSL Certificate Verified Transactions</h3>
+
+<p>All secured API transaction calls sent to Sage Pay are performed by verifying Sage Pay's SSL certificates to guarantee the identity of Sage Pay. This is performed by using the following public keys in order if they are available:</p>
+
+<ul>
+  <li>ext/modules/payment/sage_pay/sagepay.com.crt</li>
+  <li>includes/cacert.pem (public key bundle)</li>
+  <li>the web server configured public key bundle</li>
+</ul>
+
+<p>A test connection link is available on the payment module configuration page which can be used to test if API transaction calls to Sage Pay can be verified from your web server. If the test connection fails, please contact your hosting provider as they may need to update your web server configuration. The SSL certificate verification can also be disabled on the payment module configuration page however it is highly discouraged to disable.</p>
 
 <h2>Configuration Settings</h2>
 
-<table class="pretty">
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Parameter</th>
       <th>Description</th>
+      <th>Default</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Enable Sage Pay Server Module</td>
       <td>Setting this parameter to <em>True</em> makes the payment method available to customers during the checkout procedure.</td>
+      <td><em>True</em></td>
     </tr>
     <tr>
       <td>Vendor Login Name</td>
       <td>The vendor login name used to connect to the transaction gateway with.</td>
+      <td></td>
     </tr>
     <tr>
       <td>Profile Payment Page</td>
@@ -56,6 +72,7 @@
           <dd>Load the Sage Pay payment page through an iframe in the checkout procedure.</dd>
         </dl>
       </td>
+      <td><em>Normal</em></td>
     </tr>
     <tr>
       <td>Transaction Method</td>
@@ -73,6 +90,22 @@
           <dd>The <em>Payment</em> transaction method verifies, authorises, and transfers the funds to your Merchant account via batch settlement.</dd>
         </dl>
       </td>
+      <td><em>Authenticate</em></td>
+    </tr>
+    <tr>
+      <td>Set Order Status</td>
+      <td>The orders status will be updated to this value when a successful transaction has been made.</td>
+      <td><em>Default Order Status</em></td>
+    </tr>
+    <tr>
+      <td>Transaction Order Status</td>
+      <td>Transactions are logged in this private order status level.</td>
+      <td><em>Sage Pay [Transactions]</em></td>
+    </tr>
+    <tr>
+      <td>Payment Zone</td>
+      <td>If set, this payment method will only be available to orders made within the defined zone.</td>
+      <td></td>
     </tr>
     <tr>
       <td>Transaction Server</td>
@@ -84,35 +117,51 @@
           <dd>The <em>Live</em> server is used in production environments to process and receive payments from customers.</dd>
 
           <dt>Test</dt>
-          <dd>The <em>Test</em> server is only used to test transactions on the Production server. No transactions are processed and no payments are made when transactions are being tested.</dd>
-
-          <dt>Simulator</dt>
-          <dd>The <em>Simulator</em> server is used to test transactions in a sandbox testing environment. No transactions are processed and no payments are made within this environment.</dd>
+          <dd>The <em>Test</em> server is only used to test transactions with. No transactions are processed and no payments are made when transactions are being tested.</dd>
         </dl>
       </td>
+      <td><em>Live</em></td>
     </tr>
     <tr>
-      <td>Payment Zone</td>
-      <td>If set, this payment method will only be available to orders made within the defined zone.</td>
+      <td>Verify SSL Certificate</td>
+      <td>Verify Sage Pay's identity when API communication calls are sent.</td>
+      <td><em>True</em></td>
     </tr>
     <tr>
-      <td>Set Order Status</td>
-      <td>The orders status will be updated to this value when a successful transaction has been made.</td>
+      <td>Proxy Server</td>
+      <td>Send API communication calls through this proxy server.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Debug E-Mail Address</td>
+      <td>Send invalid transaction parameters to this e-mail address.</td>
+      <td></td>
     </tr>
     <tr>
       <td>Sort Order</td>
       <td>The position to show the payment method on the checkout payment page against other available payment methods.</td>
-    </tr>
-    <tr>
-      <td>cURL Location</td>
-      <td>The location and filename of the cURL "curl" program file.</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
 
+<h2>Add-On Package</h2>
+
+<p>The separate Sage Pay Server Add-On package is available at:</p>
+
+<p><a href="http://addons.oscommerce.com/info/6984" target="_blank">http://addons.oscommerce.com/info/6984</a></p>
+
+<h2>Online Demonstration</h2>
+
+<p>An online demonstration is available at:</p>
+
+<p><a href="http://demo.oscommerce.com" target="_blank">http://demo.oscommerce.com</a></p>
+
+<p><i>For the online demonstration, Sage Pay Server has been configured with Sage Pay's test server environment and requires a test payment card to purchase an order.</i></p>
+
 <h2>Manual Installation (as an Add-On)</h2>
 
-<p>After extracting the add-on package, copy the files located in the <em>catalog</em> directory to your osCommerce installation directory on the server. The files must be copied in the correct directory structure as extracted from the add-on package.</p>
+<p>After extracting the Add-On package, copy the files located in the <em>catalog</em> directory to your osCommerce installation directory on the server. The files must be copied in the correct directory structure as extracted from the Add-On package.</p>
 
 <p>The file listing is as follows:</p>
 
@@ -120,33 +169,35 @@
   <li>ext/modules/payment/sage_pay/checkout.php</li>
   <li>ext/modules/payment/sage_pay/errors.php</li>
   <li>ext/modules/payment/sage_pay/redirect.php</li>
+  <li>ext/modules/payment/sage_pay/server.php</li>
   <li>includes/languages/english/modules/payment/sage_pay_server.php</li>
-  <li>includes/languages/espanol/modules/payment/sage_pay_server.php</li>
-  <li>includes/languages/german/modules/payment/sage_pay_server.php</li>
   <li>includes/modules/payment/sage_pay_server.php</li>
 </ul>
 
-<p>The standard languages definitions in English, Spanish, and German are provided in the add-on package. For additional languages, copy one of the existing language definition files to the appropriate language directory and edit the file with a text editor to edit the language definitions. The location of the language definition file must be in:</p>
+<p>The standard language definitions in English are provided in the Add-On package. For additional languages, copy the English language definition file to the appropriate language directory and open the file with a text editor to edit the language definitions. The location of the language definition file must be in:</p>
 
 <ul>
-  <li>includes/languages/<em>language</em>/modules/payment/sage_pay_server.php</li>
+  <li>includes/languages/<em>LANGUAGE</em>/modules/payment/sage_pay_server.php</li>
 </ul>
 
-<p>When the files have been copied to their appropriate locations, the payment module will be available in the Administration Tool -> Modules -> Payment Modules listing where it can be installed.</p>
+<p>When the files have been copied to their appropriate locations, the payment module will be available on the Administration Tool -> Modules -> Payment -> Install Module page where it can be installed, or on the Administration Tool -> Modules -> Payment page if the module was already previously installed.</p>
 
-<h3>Additional Changes for Existing osCommerce Online Merchant v2.2 Milestone 2 Store Owners</h3>
-
-<p>The following core source code changes must also be performed for osCommerce Online Merchant v2.2 Milestone 2 installations:</p>
-
-<p><a href="http://github.com/osCommerce/oscommerce2/commit/80fb06c35704b1c9a8160bc7f7345cc91145862a" target="_blank">http://github.com/osCommerce/oscommerce2/commit/80fb06c35704b1c9a8160bc7f7345cc91145862a</a></p>
-
-<p>This change has been made as a bugfix for osCommerce Online Merchant v2.2 Release Candidate 1 (released 4th July 2007).</p>
+<p>If the module was already previously installed, it is important to visit the module configuration page to make sure new parameters are automatically installed in the database.</p>
 
 <h2>Changelog</h2>
 
 <dl class="bulleted">
+  <dt>v2.0 xx-May-2014</dt>
+  <dd>Use API 3.00.</dd>
+  <dd>Use a stateless NotificationURL to verify transactions.</dd>
+  <dd>Label public title with test tag when in testing mode.</dd>
+  <dd>Allow debug transaction information to be sent in an e-mail for failed transactions.</dd>
+  <dd>Include transaction information in a private order status level.</dd>
+  <dd>Add Test API Server Connection link in module configuration page.</dd>
+  <dd>Verify SSL connections with public key certificate.</dd>
+
   <dt>v1.2 07-Sep-2012</dt>
-  <dd>Fixed generated URLs (tep_href_link() produces &amp;amp; in URLs which need to be replaced with & in the payment module)</dd>
+  <dd>Fixed generated URLs (tep_href_link() produces &amp;amp; in URLs which need to be replaced with &amp; in the payment module)</dd>
 
   <dt>v1.1 01-Sep-2009</dt>
   <dd>Fixed Live/Production Transaction Server parameter value to "Live".</dd>
@@ -155,25 +206,3 @@
   <dt>v1.0 28-Aug-2009</dt>
   <dd>Initial Release</dd>
 </dl>
-
-<h2>Upgrade Notes</h2>
-
-<h3>v1.1 to v1.2</h3>
-
-<p>If you are upgrading from v1.1 to v1.2 of the payment module, please copy and overwrite the following files on your server:</p>
-
-<ul>
-  <li>includes/modules/payment/sage_pay_server.php</li>
-</ul>
-
-<h3>v1.0 to v1.1</h3>
-
-<p>If you are upgrading from v1.0 to v1.1 of the payment module, please copy and overwrite the following files on your server:</p>
-
-<ul>
-  <li>includes/modules/payment/sage_pay_server.php</li>
-</ul>
-
-<p>To update the "Transaction Server" parameter, either remove and re-install the module from the Administration Tool -> Modules -> Payment Modules page, or perform the following SQL query to your database:</p>
-
-{code}update configuration set set_function = 'tep_cfg_select_option(array(\'Live\', \'Test\', \'Simulator\'), ' where configuration_key = 'MODULE_PAYMENT_SAGE_PAY_SERVER_TRANSACTION_SERVER';{code}
