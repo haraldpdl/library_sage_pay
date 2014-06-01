@@ -28,6 +28,16 @@
           "support_url": ""
         }
       }
+    },
+    "account": {
+      "title": "Sage Pay Account Settings",
+      "pages": {
+        "linking_paypal": {
+          "title": "Linking PayPal to Your Account",
+          "package_id" :"",
+          "support_url": ""
+        }
+      }
     }
   }
 }

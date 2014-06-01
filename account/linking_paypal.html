@@ -1,0 +1,51 @@
+<h1>Linking PayPal to Your Account</h1>
+
+<p>Accept PayPal payments and process refunds in the same way you would for card payments by using Sage Pay's cloud-based interface; MySagePay. The integration is easy and seamless and there is no further need to log in your PayPal account to make account changes.</p>
+
+<div class="note">Please be sure to link your Live PayPal account with your Live Sage Pay account, and for testing purposes to link your Sandbox PayPal account with your Test Sage Pay account.</div>
+
+<h2>Setting Up PayPal</h2>
+
+<p>Create or log into your live or sandbox PayPal account and go to the Profile -> Request API Credentials or API Access page. Here, under Option 1, select Grant API Permissions or Add or Edit API Permissions to be able to manage third party permissions.</p>
+
+{image}paypal-api_access.jpg{image}
+
+<p>If you have already granted third party applications access to your account profile, select Add New Third Party to start linking your account to Sage Pay. The following form will be presented:</p>
+
+{image}paypal-add_permissions.jpg{image}
+
+<p>Enter the following in the Third Party Permission Username field and select Lookup:</p>
+
+<dl class="dl-horizontal">
+  <dt>Live Account</dt>
+  <dd>paypal_api1.protx.com</dd>
+
+  <dt>Test Account</dt>
+  <dd>ppdev_1256915571_biz_api1.sagepay.com </dd>
+</dl>
+
+<div class="info">The organization for the Live Account is displayed as SagePay, and for the Test Account as Rik Blacow's Test Store.</div>
+
+<p>After entering the Third Party Permission Username, a list of permissions will be presented to choose which should be granted to Sage Pay. Please enable all permissions to successfully link your PayPal account with your Sage Pay account and select Add to save your settings.</p>
+
+{image}paypal-permissions.jpg{image}
+
+<p>A confirmation page will then be shown to confirm the addition of the third party access.</p>
+
+{image}paypal-permissions_saved.jpg{image}
+
+<h2>Setting Up Sage Pay</h2>
+
+<p>Log into your live or test Sage Pay account with a user account that has administrator privileges and go to the Settings -> Pay Methods page. Here, on the bottom right corner of the page, select Set a PayPal Account to add your live or sandbox PayPal account details.</p>
+
+{image}sagepay-account.jpg{image}
+
+<p>Enter your live or sandbox PayPal account e-mail address to link to and select Update to save your settings.</p>
+
+{image}sagepay-add_paypal.jpg{image}
+
+<p>After entering your PayPal account e-mail address, your Sage Pay account has successfully linked to your PayPal account and you can start accepting PayPal payments on your store through Sage Pay.</p>
+
+{image}sagepay-paypal_saved.jpg{image}
+
+<div class="info">For Sage Pay Direct, be sure to enable PayPal as a payment method in the Administration Tool -> Modules -> Payment -> Sage Pay Direct -> Edit module configuration settings page. This is not required for Sage Pay Form or Sage Pay Server.</div>

@@ -33,15 +33,22 @@
 
 <h3>Securely Stored Payment Cards (Tokens)</h3>
 
-<p>If stored tokens is enabled, customers are given the opportunity to securely save their card payment information during their purchase and to reference the card in their next purchase without having to re-type their card information again. The card payment information is securely stored at Sage Pay's servers and is referenced with a unique token code.</p>
+<p>Stored tokens allows customers to securely save their card payment information during their purchase and to reference the stored card in their next purchase without having to re-type their card information again. The card payment information is securely stored at Sage Pay's servers and is referenced with a unique token code.</p>
 
-<div class="info">If stored tokens is enabled, it is important to enable the Sage Pay Cards Management Page content module to allow customers to manage their stored cards in their account area. The content module can be found on the Administration Tool -> Modules -> Content -> Install Module page.</div>
+<h4 class="notoc">Requirements</h4>
 
-<div class="note">Stored Payment Cards (Tokens) requires support for Content Modules that was introduced in osCommerce Online Merchant v2.3.4.</div>
+<p>Stored tokens requires the following:</p>
+
+<ul>
+  <li>Sage Pay Cards Management Page content module; it is important to enable the Sage Pay Cards Management Page content module to allow customers to manage their stored cards in their account area. The content module can be found on the Administration Tool -> Modules -> Content -> Install Module page.</li>
+  <li>Content Modules; as Sage Pay Cards Management Page is a content module, it requires the Content Modules implementation introduced in osCommerce Online Merchant v2.3.4. Please refer to its <a href="{link}Online|Library|en&oscom_2_3&release_notes&v2_3_4{link}">release notes</a> to add the implementation into your existing store.</li>
+</ul>
 
 <h3>PayPal Payments</h3>
 
-<p>PayPal payments can be provided as an option as a card payment method. This requires PayPal to be added as a supported payment method to your Sage Pay account and to link your PayPal seller account to your Sage Pay account.</p>
+<p>PayPal can be provided as a card payment method option. This requires PayPal to be added as a supported payment method to your Sage Pay account and your PayPal seller account to be linked to your Sage Pay account.</p>
+
+<p>Please refer to <a href="{link}Package|Library|en&sage_pay&account&linking_paypal{link}">Linking PayPal to Your Account</a> for instructions on how to link PayPal to your account.</p>
 
 <h3>SSL Certificate Verified Transactions</h3>
 
@@ -258,16 +265,17 @@
 <h2>Changelog</h2>
 
 <dl class="bulleted">
-  <dt>v3.0 xx-May-2014</dt>
+  <dt>v3.0 01-Jun-2014</dt>
   <dd>Support PayPal payments.</dd>
   <dd>Introduce Sage Pay Cards Management Content Module for the My Account page (requires osCommerce Online Merchant v2.3.4).</dd>
-  <dd>Autoselect payment module if customer has stored card tokens.</dd>
+  <dd>Automatically select payment module if customer has stored card tokens.</dd>
 
   <dt>v2.0 26-Jul-2013<dt>
+  <dd>Use API 3.00.</dd>
   <dd>Support stored card tokens.</dd>
   <dd>Show month numbers instead of names for card expiry date.</dd>
   <dd>Dynamically show card start and issue number fields depending on card selected.</dd>
-  <dd>Remove SOLO; Add LASER and MCDEBIT as allowed payment cards.</dd>
+  <dd>Removed SOLO; Added LASER and MCDEBIT as allowed payment cards.</dd>
   <dd>Include transaction information in a private order status level.</dd>
   <dd>Add Test API Server Connection link in module configuration page.</dd>
   <dd>Verify SSL connections with public key certificate.</dd>
